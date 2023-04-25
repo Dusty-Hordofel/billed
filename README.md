@@ -35,3 +35,20 @@ if (validExtensions.includes(file.type)) {
   e.target.value = "";
 }
 ```
+
+### 4. [Bug report] - Bills | High 🔥
+
+- Le test Bills / les notes de frais s'affichent par ordre décroissant est passé au rouge. Faire passer le test au vert en réparant la fonctionnalité.
+
+```js
+const rows = (data) => {
+  // [Bug report] - Bills | High 🔥
+  // return (data && data.length) ? data.map(bill => row(bill)).join("") : ""
+  return data && data.length
+    ? data
+        .sort((a, b) => (a.date > b.date ? 1 : -1))
+        .map((bill) => row(bill))
+        .join("")
+    : "";
+};
+```
