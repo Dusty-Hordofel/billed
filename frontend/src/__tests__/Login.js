@@ -11,18 +11,20 @@ describe("Given that I am a user on login page", () => {
   describe("When I do not fill fields and I click on employee button Login In", () => {
     test("Then It should renders Login page", () => {
       document.body.innerHTML = LoginUI();
-
+      //la bibliothèque de test DOM exporte également un screen objet contenant toutes les requêtes pré-liées document.body()
+      //getBy...() : renvoie l'élément correspondant à l'attribut data-testid ,
       const inputEmailUser = screen.getByTestId("employee-email-input");
+
       expect(inputEmailUser.value).toBe("");
 
       const inputPasswordUser = screen.getByTestId("employee-password-input");
       expect(inputPasswordUser.value).toBe("");
 
       const form = screen.getByTestId("form-employee");
-      const handleSubmit = jest.fn((e) => e.preventDefault());
+      const handleSubmit = jest.fn((e) => e.preventDefault()); //utilisation d'une function simulée pour éviter le rechargement de la page
 
       form.addEventListener("submit", handleSubmit);
-      fireEvent.submit(form);
+      fireEvent.submit(form); //fireEvent.click, qui crée un événement click et distribue cet événement sur le nœud DOM donné.
       expect(screen.getByTestId("form-employee")).toBeTruthy();
     });
   });
@@ -95,10 +97,10 @@ describe("Given that I am a user on login page", () => {
       });
 
       const handleSubmit = jest.fn(login.handleSubmitEmployee);
-      login.login = jest.fn().mockResolvedValue({});
+      login.login = jest.fn().mockResolvedValue({}); //Utile pour simuler les fonctions asynchrones dans les tests asynchrones
       form.addEventListener("submit", handleSubmit);
       fireEvent.submit(form);
-      expect(handleSubmit).toHaveBeenCalled();
+      expect(handleSubmit).toHaveBeenCalled(); //Utilisez .toHaveBeenCalledTimes pour vous assurer qu'une fonction simulée a été appelée avec des arguments spécifiques.
       expect(window.localStorage.setItem).toHaveBeenCalled();
       expect(window.localStorage.setItem).toHaveBeenCalledWith(
         "user",
@@ -108,7 +110,7 @@ describe("Given that I am a user on login page", () => {
           password: inputData.password,
           status: "connected",
         })
-      );
+      ); //Utilisez .toHaveBeenCalledWith pour vous assurer qu'une fonction simulée a été appelée avec des arguments spécifiques
     });
 
     test("It should renders Bills page", () => {
