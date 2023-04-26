@@ -4,13 +4,13 @@
 - use npm command to install dependencies
 - lancez le backend et le frontend de l'application
 
-## 2. debug login form
+## 2. [Bug report] - Bills | Login 🔥
 
 - add a correct Admin selector element
 
-## 3. debug Bills format
+## 3. [Bug report] - Bills | High| Image 🔥
 
-- add a valid format on bills
+- add a valid format on bill's image
 
 ```js
 // If the file type is included in the list of allowed file types,
@@ -36,7 +36,7 @@ if (validExtensions.includes(file.type)) {
 }
 ```
 
-### 4. [Bug report] - Bills | High 🔥
+### 4. [Bug report] - Bills | High|Sorting 🔥
 
 - Le test Bills / les notes de frais s'affichent par ordre décroissant est passé au rouge. Faire passer le test au vert en réparant la fonctionnalité.
 
@@ -51,4 +51,16 @@ const rows = (data) => {
         .join("")
     : "";
 };
+```
+
+### 5. [Bug Hunt] - Dashboard
+
+```js
+// [Bug hunt] - Dashboard | High 🔥
+// bills.forEach(bill => { $(`#open-bill${ bill.id }`).click(e => this.handleEditTicket(e, bill, bills)); });
+bills.forEach((bill) =>
+  $(`#status-bills-container${this.index} #open-bill${bill.id}`).click((e) =>
+    this.handleEditTicket(e, bill, bills)
+  )
+);
 ```
