@@ -82,3 +82,5 @@ Il convient de noter que la variable this.index est utilisée pour générer dyn
 ### 7. NewBill test unitaires
 
 ### 8. NewBill test d'intégration
+
+### 9. Bill test d'intégration
