@@ -4,6 +4,7 @@ import LoadingPage from "./LoadingPage.js";
 
 import Actions from "./Actions.js";
 
+// les lignes du tableau des notes de frais
 const row = (bill) => {
   return `
     <tr>
@@ -17,8 +18,9 @@ const row = (bill) => {
       </td>
     </tr>
     `;
-};
+}; //Actions contient les icones de l'oeil et du téléchargement
 
+// les notes de frais sont triées par date et affichées dans le tableau
 const rows = (data) => {
   // [Bug report] - Bills | High 🔥
   // return (data && data.length) ? data.map(bill => row(bill)).join("") : ""
@@ -31,6 +33,7 @@ const rows = (data) => {
 };
 
 export default ({ data: bills, loading, error }) => {
+  //Modal des justificatifs
   const modal = () => `
     <div class="modal fade" id="modaleFile" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -53,7 +56,7 @@ export default ({ data: bills, loading, error }) => {
   } else if (error) {
     return ErrorPage(error);
   }
-
+  //VerticalLayout affiche le menu de gauche et le reste permet d'afficher les notes de frais
   return `
     <div class='layout'>
       ${VerticalLayout(120)}
