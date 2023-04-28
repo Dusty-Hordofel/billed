@@ -159,31 +159,34 @@ describe("Given I am connected as an employee", () => {
       localStorage.setItem(
         "user",
         JSON.stringify({ type: "Employee", email: "e@e" })
-      );
-      const root = document.createElement("div");
-      root.setAttribute("id", "root");
-      document.body.append(root);
-      router();
-      window.onNavigate(ROUTES_PATH.Bills);
-      await waitFor(() => screen.getByText("Mes notes de frais"));
-      expect(screen.getByTestId("tbody")).toBeTruthy();
+      ); // ajouter l'utilisateur dans le local storage
+      const root = document.createElement("div"); //créer un élément div
+      root.setAttribute("id", "root"); //ajouter un id à l'élément div
+      document.body.append(root); //ajouter l'élément div au body
+      router(); //permet de recupérer les notes de frais en tenant compte de l'url
+      window.onNavigate(ROUTES_PATH.Bills); //rediriger vers la page Bills
+      await waitFor(() => screen.getByText("Mes notes de frais")); //attendre que le texte "Mes notes de frais" soit affiché
+      expect(screen.getByTestId("tbody")).toBeTruthy(); //vérifier que le tableau est affiché
     });
   });
 
   describe("When an error occurs on API", () => {
+    //tester l'affichage d'un message d'erreur
     beforeEach(() => {
-      jest.spyOn(mockStore, "bills");
+      jest.spyOn(mockStore, "bills"); //créer une fonction simulée qui remplace la méthode bills dans l'objet mockStore
+      //La méthode jest.spyOn prend en premier argument l'objet ou le module sur lequel on veut créer la fonction simulée, et en deuxième argument le nom de la méthode qu'on veut remplacer par la fonction simulée. Dans le cas présent, on crée une fonction simulée pour remplacer la méthode bills dans mockStore
       Object.defineProperty(window, "localStorage", {
         value: localStorageMock,
       });
       window.localStorage.setItem(
         "user",
         JSON.stringify({ type: "Employee", email: "e@e" })
-      );
-      const root = document.createElement("div");
-      root.setAttribute("id", "root");
-      document.body.appendChild(root);
-      router();
+      ); // ajouter l'utilisateur dans le local storage
+
+      const root = document.createElement("div"); //créer un élément div
+      root.setAttribute("id", "root"); //ajouter un id à l'élément div
+      document.body.appendChild(root); //ajouter l'élément div au body
+      router(); //permet de recupérer les notes de frais en tenant compte de l'url
     });
 
     test("fetches bills from an API and fails with 404 message error", async () => {

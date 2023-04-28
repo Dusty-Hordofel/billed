@@ -23,14 +23,15 @@ const row = (bill) => {
 // les notes de frais sont triées par date et affichées dans le tableau
 const rows = (data) => {
   // [Bug report] - Bills | High 🔥
-  // return (data && data.length) ? data.map(bill => row(bill)).join("") : ""
-  return data && data.length
-    ? data
-        .sort((a, b) => (a.date > b.date ? 1 : -1))
-        .map((bill) => row(bill))
-        .join("")
-    : "";
+  return data && data.length ? data.map((bill) => row(bill)).join("") : "";
+  // return data && data.length
+  //   ? data
+  //       .sort((a, b) => (a.date > b.date ? 1 : -1))
+  //       .map((bill) => row(bill))
+  //       .join("")
+  //   : "";
 };
+console.log("🚀 ~ file: BillsUI.js:34 ~ rows ~ rows:", rows);
 
 export default ({ data: bills, loading, error }) => {
   //Modal des justificatifs

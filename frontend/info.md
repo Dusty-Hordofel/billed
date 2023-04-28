@@ -12,6 +12,6 @@
 - [NewBill](src/containers/NewBill.js) permet de soumettre le formulaire contenant les informations de la nouvelle note de frais (gestion des types de fichiers, téléverser et autres...).
 - On utilise [Router.js](src/app/Router.js) pour afficher tous les templates en fonction de url.
 
-- eyeBlueIcon (icon pour déclencher la modale) est contenu dans [Actions.js](src/views/Actions.js)
+- eyeBlueIcon (icon pour déclencher la modale) est contenu dans [Actions.js](src/views/Actions.js). la class [Bills](src/containers/Bills.js) contient handleClickIconEye() qui gère l'affichage de la modale lorsque je clique sur l'oeil.
 
 ### Admin
