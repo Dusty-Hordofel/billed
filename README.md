@@ -86,3 +86,7 @@ Il convient de noter que la variable this.index est utilisée pour générer dyn
 ### 9. Bill test d'intégration
 
 ## Section 4: Test End To End
+
+### 10. E2E
+
+- ajouter les documents du test E2E dans le [docs](frontend/src/docs)
