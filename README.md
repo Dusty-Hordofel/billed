@@ -64,3 +64,29 @@ bills.forEach((bill) =>
   )
 );
 ```
+
+```js
+/*
+Ce code utilise la méthode forEach pour parcourir en boucle chaque objet facture dans un tableau, et pour chaque facture, il sélectionne un élément DOM avec l'ID #open-bill${bill.id} et y attache un récepteur d'événement de clic en utilisant la méthode click de jQuery.
+
+La méthode handleEditTicket est ensuite appelée avec l'objet d'événement e, l'objet de facture actuel et le tableau de factures comme arguments lorsque l'événement de clic est déclenché.
+
+Il convient de noter que la variable this.index est utilisée pour générer dynamiquement l'ID de l'élément conteneur des factures. 
+*/
+```
+
+## Section 3: Ajout de tests unitaires et d'intégration
+
+### 6. Bill test unitaires
+
+### 7. NewBill test unitaires
+
+### 8. NewBill test d'intégration
+
+### 9. Bill test d'intégration
+
+## Section 4: Test End To End
+
+### 10. E2E
+
+- ajouter les documents du test E2E dans le [docs](frontend/src/docs)

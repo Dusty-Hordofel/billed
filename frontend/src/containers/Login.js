@@ -24,8 +24,9 @@ export default class Login {
     );
     formAdmin.addEventListener("submit", this.handleSubmitAdmin);
   }
+  // permet de se connecter en tant qu'employé
   handleSubmitEmployee = (e) => {
-    e.preventDefault();
+    e.preventDefault(); //empêcher le comportement par défaut du navigateur (rechargement de la page)
     const user = {
       type: "Employee",
       email: e.target.querySelector(`input[data-testid="employee-email-input"]`)
@@ -34,20 +35,22 @@ export default class Login {
         `input[data-testid="employee-password-input"]`
       ).value,
       status: "connected",
-    };
-    this.localStorage.setItem("user", JSON.stringify(user));
+    }; //récupérer les valeurs des inputs
+    this.localStorage.setItem("user", JSON.stringify(user)); //ajouter les valeurs de l'utilisateur dans le local storage
+    //login de l'utilisateur
     this.login(user)
       .catch((err) => this.createUser(user))
       .then(() => {
-        this.onNavigate(ROUTES_PATH["Bills"]);
-        this.PREVIOUS_LOCATION = ROUTES_PATH["Bills"];
+        this.onNavigate(ROUTES_PATH["Bills"]); //redirection vers la page des notes de frais
+        this.PREVIOUS_LOCATION = ROUTES_PATH["Bills"]; //la page précédente est la page des notes de frais
         PREVIOUS_LOCATION = this.PREVIOUS_LOCATION;
-        this.document.body.style.backgroundColor = "#fff";
-      });
+        this.document.body.style.backgroundColor = "#fff"; //changer la couleur du background
+      }); //catch((err) => this.createUser(user)),Cela signifie que si la promesse précédente échoue, le code tentera de créer un utilisateur avec les données transmises en tant qu'utilisateur.
   };
 
+  // permet de se connecter en tant qu'admin
   handleSubmitAdmin = (e) => {
-    e.preventDefault();
+    e.preventDefault(); //empêcher le comportement par défaut du navigateur (rechargement de la page)
     const user = {
       type: "Admin",
       email: e.target.querySelector(`input[data-testid="admin-email-input"]`)
@@ -56,7 +59,7 @@ export default class Login {
         `input[data-testid="admin-password-input"]`
       ).value,
       status: "connected",
-    };
+    }; //réupérer les valeurs des inputs de l'admin
 
     console.log(
       e.target.querySelector(`input[data-testid="admin-email-input"]`).value
@@ -65,19 +68,20 @@ export default class Login {
       e.target.querySelector(`input[data-testid="admin-password-input"]`).value
     );
 
-    this.localStorage.setItem("user", JSON.stringify(user));
+    this.localStorage.setItem("user", JSON.stringify(user)); //ajouter les valeurs de l'administrateurs dans le local storage
     this.login(user)
       .catch((err) => this.createUser(user))
       .then(() => {
-        this.onNavigate(ROUTES_PATH["Dashboard"]);
-        this.PREVIOUS_LOCATION = ROUTES_PATH["Dashboard"];
+        this.onNavigate(ROUTES_PATH["Dashboard"]); //redirection vers la page du dashboard
+        this.PREVIOUS_LOCATION = ROUTES_PATH["Dashboard"]; //la page précédente est la page du dashboard
         PREVIOUS_LOCATION = this.PREVIOUS_LOCATION;
-        document.body.style.backgroundColor = "#fff";
+        document.body.style.backgroundColor = "#fff"; //changer la couleur du background
       });
-  };
+  }; //catch((err) => this.createUser(user)),Cela signifie que si la promesse précédente échoue, le code tentera de créer un utilisateur avec les données transmises en tant qu'utilisateur.
 
   // not need to cover this function by tests
   login = (user) => {
+    //si le store existe alors on se connecte
     if (this.store) {
       return this.store
         .login(
@@ -90,9 +94,10 @@ export default class Login {
           localStorage.setItem("jwt", jwt);
         });
     } else {
+      //sinon on retourne null
       return null;
     }
-  };
+  }; //function permettant de se connecter
 
   // not need to cover this function by tests
   createUser = (user) => {
@@ -114,5 +119,5 @@ export default class Login {
     } else {
       return null;
     }
-  };
+  }; //permets de créer un utilisateur
 }
