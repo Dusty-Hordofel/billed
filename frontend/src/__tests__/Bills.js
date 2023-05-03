@@ -62,18 +62,6 @@ describe("Given I am connected as an employee", () => {
       const datesSorted = [...dates].sort(antiChrono); //This code creates a new array called datesSorted that is a copy of the dates array, and then sorts the new array in descending order using the antiChrono comparison function.
       expect(dates).toEqual(datesSorted); //The expect() function checks that the dates array is equal to the datesSorted array.
     });
-
-    test("Then bills should be ordered from earliest to latest", () => {
-      document.body.innerHTML = BillsUI({ data: bills });
-      const dates = screen
-        .getAllByText(
-          /^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/i
-        )
-        .map((a) => a.innerHTML);
-      const antiChrono = (a, b) => (a > b ? 1 : -1);
-      const datesSorted = [...dates].sort(antiChrono);
-      expect(dates).toEqual(datesSorted);
-    });
   });
 
   //tester l'ouverture de la modale au clic sur l'icone eye
