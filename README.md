@@ -85,4 +85,4 @@ Il convient de noter que la variable this.index est utilisée pour générer dyn
 
 ### 9. Bill test d'intégration
 
-### 10.
+## Section 4: Test End To End
