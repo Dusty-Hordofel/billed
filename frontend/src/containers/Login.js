@@ -48,6 +48,7 @@ export default class Login {
       }); //catch((err) => this.createUser(user)),Cela signifie que si la promesse précédente échoue, le code tentera de créer un utilisateur avec les données transmises en tant qu'utilisateur.
   };
 
+  //1. [Bug report] - Bills | Login 🔥
   // permet de se connecter en tant qu'admin
   handleSubmitAdmin = (e) => {
     e.preventDefault(); //empêcher le comportement par défaut du navigateur (rechargement de la page)

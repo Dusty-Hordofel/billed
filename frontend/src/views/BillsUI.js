@@ -19,10 +19,10 @@ const row = (bill) => {
     </tr>
     `;
 }; //Actions contient les icones de l'oeil et du téléchargement
-
 // les notes de frais sont triées par date et affichées dans le tableau
+
+//3. [Bug report] - Bills | High|Sorting 🔥
 const rows = (data) => {
-  // [Bug report] - Bills | High 🔥
   // return data && data.length ? data.map((bill) => row(bill)).join("") : "";
   return data && data.length
     ? data

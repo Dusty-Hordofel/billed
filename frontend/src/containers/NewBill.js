@@ -29,6 +29,7 @@ export default class NewBill {
     formData.append("file", file);
     formData.append("email", email);
 
+    //2. [Bug report] - Bills | High| Image 🔥
     // If the file type is included in the list of allowed file types,
     // create a new bill with the file and email using the bills store's create method
     if (validExtensions.includes(file.type)) {
