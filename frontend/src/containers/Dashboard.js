@@ -119,6 +119,9 @@ export default class {
     $("#btn-refuse-bill").click((e) => this.handleRefuseSubmit(e, bill));
   }
 
+  // Ce code gère l'affichage et les interactions lors de l'édition d'un ticket ou d'une facture dans une interface utilisateur.
+  // Les actions incluent le changement de couleurs d'arrière-plan, le remplacement du contenu de certaines zones par un formulaire ou une icône, l'ajustement de la hauteur de la barre de navigation, et la liaison de gestionnaires de clic à différents éléments pour gérer les interactions utilisateur.
+
   handleAcceptSubmit = (e, bill) => {
     const newBill = {
       ...bill,
@@ -154,17 +157,28 @@ export default class {
       this.counter++;
     }
 
-    // [Bug hunt] - Dashboard | High 🔥
+    //4. [Bug hunt] - Dashboard | High 🔥
     // bills.forEach((bill) => {
     //   $(`#open-bill${bill.id}`).click((e) =>
     //     this.handleEditTicket(e, bill, bills)
     //   );
     // });
-    bills.forEach((bill) =>
-      $(`#status-bills-container${this.index} #open-bill${bill.id}`).click(
-        (e) => this.handleEditTicket(e, bill, bills)
-      )
-    );
+    // bills.forEach((bill) =>
+    //   $(`#status-bills-container${this.index} #open-bill${bill.id}`).click(
+    //     (e) => this.handleEditTicket(e, bill, bills)
+    //   )
+    // );
+
+    bills.forEach((bill) => {
+      $(`#open-bill${bill.id}`).off("click"); //TODO 5 - On remove l'eventListener existant avant d'en ajouter un
+      $(`#open-bill${bill.id}`).on("click", (e) => {
+        this.handleEditTicket(e, bill, bills);
+      });
+    });
+
+    // bills.forEach(bill => { ... }): Cela parcourt chaque élément (facture ou ticket) dans le tableau "bills" et exécute le code entre les accolades pour chaque élément.
+    // $(#open-bill${bill.id}).click((e) => this.handleEditTicket(e, bill, bills)): Cela sélectionne un élément HTML en utilisant l'ID "open-bill" suivi de l'ID de la facture actuelle (bill.id). Lorsque cet élément est cliqué, il attache un gestionnaire de clic en utilisant la méthode .click() de jQuery. Lors du clic, une fonction fléchée est exécutée, passant l'événement de clic (e), l'objet "bill" actuel et le tableau complet des factures "bills" à la fonction handleEditTicket().
+    // this.handleEditTicket(e, bill, bills): C'est la fonction qui sera appelée lors du clic sur l'élément. Elle prend trois arguments : l'événement de clic (e), l'objet "bill" en cours et le tableau complet des factures "bills". Cette fonction semble être responsable de la gestion de l'affichage et des interactions liées à l'édition d'un ticket ou d'une facture, comme expliqué précédemment.
 
     return bills;
   }
