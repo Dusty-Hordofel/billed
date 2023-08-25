@@ -284,16 +284,71 @@ En utilisant la méthode .off() pour supprimer les gestionnaires de clic existan
 
 ## Section 3: Ajout de tests unitaires et d'intégration
 
-### 6. Bill test unitaires
+### Bill test unitaires et d'intégrations
 
-### 7. NewBill test unitaires
+#### 6. Bill test unitaires
 
-### 8. NewBill test d'intégration
+- lancement des tests `npm test`
 
-### 9. Bill test d'intégration
+### ![Tous les Tests ](images/couverture-init.png "Project Billed")
+
+- tous les composants view sont couverts à `100%`
+- ajout de l'assertion au niveau du premier test `Given I am connected as an employee` de [Bills](frontend/src/__tests__/Bills.js) pour s'assurer qu'on a bien l'attribut de données `icon-window`
+
+```js
+//to-do write expect expression
+expect(windowIcon).toBeTruthy();
+```
+
+# Couvrir un maximum de `statements` composant container/Bills `80%`: Ajout des test Unitaires
+
+Il existe déjà deux tests au niveau de [Bills](frontend/src/__tests__/Bills.js):
+
+#### Vérifier que l'icone sur la barre verticale est en surbrillance
+
+- lorsqu'on est connecté ent tant qu'employé et sur la page d'acceuille, l'icon des facture sur la barre verticale doit etre mis en évidence.
+
+### ![Bills icons ](images/Bills/icons.png "Project Billed")
+
+on récupère l'attribut de données des icons `icon-window` et on verifie qu'il existe , s'il existe le test passe , si non le teste échoue
+
+#### Lérifier que les factures sont classées par ordre décroissant
+
+- le second test vérifie que les factures doivent ensuite être classées de la plus ancienne à la plus récente. on extrait les dates de toutes les factures, on les compare puis on les tries du plus ancien au plus récent . Au niveau de l'assertion on compare les les dates triés sont égales celles récupérés. Si c'est le cas le test passe , si non il échoue.
+
+  #### La modale s'ouvre au clic sur l'icone eye
+
+- on récupère tous les attributs de données `icon-eye` pour l'icon et `modaleFile` pour la modale , on simule l'ouverture de la modale avec la fonction `handleClickIconEye` qui utilise jest pour simuler 'ouverture de la modale au `click`. On verifie que la modale est affiché grace à l'aasertion expect
+
+#### tester la création d'une note de frais
+
+- au click sur la créer une note de frais , on doit être rediriger vers une nouvelle page,on récupère l'attrbut de données `btn-new-bill"` ,on vérifie le changement de route au clic, on simule le clic sur le bouton grace à l'interaction utilisteur,
+  À utiliser .`toHaveBeenCalledWithpour` garantir qu'une fonction fictive a été appelée avec des arguments spécifiques.
+
+#### 7. Bill test d'intégrations
+
+#### vérifier l'existence du texte Mes notes de frais et du tableau des facture
+
+- on récupère le text `Mes notes de frais` grace à la méthode,
+  on vérifie l'existence du tableau des notes de frais grace à l'attribut de données `tbody`.
+
+#### tester l'affichage d'erreur
+
+- on récupère toutes les notes de frais avant chaque test, on simule une erreur 404, on s'attend à ce que l'assertion soit vraie.On fait cela avec une erreur 404 et 500.
+
+### NewBill test unitaires et d'intégrations
+
+#### 8. NewBill test unitaires
+
+- Au niveau de `Newbill` , il m'a fallut créer un premier test permettant de vérifier que l'icon mail est en toujours en surbrillance lorsque je suis connecté en tant qu'employé.on récupère l'attribut de données lié à l'icon , et on vérifie que via l'assertion except qu'il est bien affiché.
+
+#### 9. NewBill test d'intégration
+
+- au niveau du test d'intégration de New Bill , lobjectif est de vérifier on va vérifier le fonctionnement du formulaire de création d'une nouvelle facture, qu'elle est bien effective. on récupère la vue NewBill,on l'ajoute au body, on crée une variable contenant les informations des différents champs, on récupère les attributs de données des différents champs et on simule lajout des données et le changement de champs.
+  On verifie via les assertions qu'on reçoit le bon format d'image, que la soumission de la création de la nouvelle facture est effective.
 
 ## Section 4: Test End To End
 
-### 10. E2E
+#### 10. E2E
 
 - ajouter les documents du test E2E dans le [docs](frontend/src/docs)
