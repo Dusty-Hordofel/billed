@@ -120,7 +120,7 @@ Dans le rapport de test "Login, si un administrateur remplit correctement les ch
 
 Faire passer le test au vert en réparant la fonctionnalité.
 
-- lors du lancement du test jest src/**tests**/Login.js,
+- Lors du lancement du test jest src/**tests**/Login.js,
   j'ai une erreur me disant
 
 ### ![Login Test](images/Login/../../frontend/images/Login/Login-test.png)
@@ -208,7 +208,7 @@ Faire passer le test au vert en réparant la fonctionnalité.
 
 - lancer le test de [Bills](frontend/src/__tests__/Bills.js)
 
-### ![View Test ](images/Bills/BillTest.png "Employé Bill")
+### ![View Test ](frontend/images/Bills/BillTest.png "Employé Bill")
 
 - On remarque tout de suite au niveau du test , on importe des données du fichier `import { bills } from "../fixtures/bills.js"`
 - ces données sont tranmises au fichier à `BillsUI`, c'est donc dans BillsUI que doit se trouver l'erreur. Il faut noter qu'au niveau du debuggeur , je n'aurais pas de retour , car toutes les informations sont bien transmises. Je regarde donc la fonction chargé d'afficher les données de chaque facture.
@@ -240,7 +240,7 @@ const rows = (data) => {
 
 - on relance le test pour voir si cela passe
 
-### ![View Test ](images/Bills/BillSort.png "Employé Bill")
+### ![View Test ](frontend/images/Bills/BillSort.png "Employé Bill")
 
 ### 5. [Bug Hunt] - Dashboard 🔥
 
@@ -266,7 +266,7 @@ bills.forEach((bill) => {
 });
 ```
 
-- l'identifiant `#open-bill${bill.id}` fait référence à La factur ``Card
+- l'identifiant `#open-bill${bill.id}` fait référence à La facture ``Card
 - <!-- - je me rends dans `DashboardUI` qui représente la vue des différentes section de tri `En attente`,`Validé`, `Refusé`. -->
 - `handleShowTickets` Ce gère l'affichage et l'interaction avec des tickets ou des factures dans un contexte où différents types de tickets sont regroupés par statut. Je vais expliquer chaque partie du code en détail. Elle va gérer les icons , filtrer les factures par status et le comportment au niveau des clicks de chaque facture.
 
@@ -312,7 +312,7 @@ Il existe déjà deux tests au niveau de [Bills](frontend/src/__tests__/Bills.js
 
 on récupère l'attribut de données des icons `icon-window` et on verifie qu'il existe , s'il existe le test passe , si non le teste échoue
 
-#### Lérifier que les factures sont classées par ordre décroissant
+#### Vérifier que les factures sont classées par ordre décroissant
 
 - le second test vérifie que les factures doivent ensuite être classées de la plus ancienne à la plus récente. on extrait les dates de toutes les factures, on les compare puis on les tries du plus ancien au plus récent . Au niveau de l'assertion on compare les les dates triés sont égales celles récupérés. Si c'est le cas le test passe , si non il échoue.
 
@@ -352,3 +352,6 @@ on récupère l'attribut de données des icons `icon-window` et on verifie qu'il
 #### 10. E2E
 
 - ajouter les documents du test E2E dans le [docs](frontend/src/docs)
+
+
+
