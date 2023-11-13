@@ -50,9 +50,13 @@ describe("Given I am connected as an employee", () => {
         fileUrl: "testFacture.png",
         fileName: "testFacture",
         status: "pending",
-      }; //création d'une facture
+      }; //création d'une note de frais
 
       //fireEvent.change(element, { target: { value: 'new value' } }), permet de simuler un événement de changement sur un élément d'entrée ou de sélection dans le DOM.
+      //fireEvent.submit(element), permet de simuler un événement de soumission sur un élément de formulaire dans le DOM.
+      //fireEvent.click(element), permet de simuler un événement de clic sur un élément dans le DOM.
+
+      //fireEvent est une fonction de test qui permet de simuler un événement sur un élément du DOM
 
       const typeField = screen.getByTestId("expense-type"); //récupérer le champ type de la facture
       fireEvent.change(typeField, { target: { value: bill.type } }); //changer la valeur du champ type de la facture
